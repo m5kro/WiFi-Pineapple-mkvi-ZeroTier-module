@@ -1,5 +1,5 @@
 # WiFi-Pineapple-mkvi-ZeroTier-module
-A module that installs and configures zerotier-one for the wifi pineapple nano and tetra.
+A module that installs and configures zerotier-one for the wifi pineapple nano and tetra. [Tested on os version 2.9.0](https://github.com/xchwarze/wifi-pineapple-cloner)
 
 ### Install
 
