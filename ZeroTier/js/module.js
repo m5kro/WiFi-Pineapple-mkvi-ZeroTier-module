@@ -83,6 +83,7 @@ registerController('ZeroTierController', ['$api', '$scope', '$rootScope', '$inte
 
     $scope.identity = "";
     $scope.ip = "";
+    $scope.setIDStatus = "";
 
     $scope.getIdentity = function () {
         $api.request({
@@ -104,6 +105,7 @@ registerController('ZeroTierController', ['$api', '$scope', '$rootScope', '$inte
                 $scope.boot = response.boot;
                 $scope.bootLabel = response.bootLabel;
                 $scope.ip = response.ip;
+                $scope.setIDStatus = ""
                 $scope.getIdentity();
             });
         }, 2000);
@@ -114,6 +116,8 @@ registerController('ZeroTierController', ['$api', '$scope', '$rootScope', '$inte
             module: "ZeroTier",
             action: "zerotierSetID",
             ID: $scope.ID
+        }, function (response) {
+            $scope.setIDStatus = response.confirm;
         });
     };
 

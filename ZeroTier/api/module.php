@@ -164,6 +164,7 @@ class ZeroTier extends Module
         $this->execBackground("uci commit zerotier");
         $this->execBackground("uci add_list zerotier.openwrt_network.join='{$this->request->ID}'");
         $this->execBackground("uci commit zerotier");
+        $this->response = ["confirm" => "Success"];
     }
 
     protected function zerotierGetID()
