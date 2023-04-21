@@ -17,7 +17,7 @@ if [ "$1" = "install" ]; then
      opkg install libnatpmp
      opkg install zerotier
 
-# kmod-tun and zerotier installed at root due to uci and /dev/net/tun missing issues
+# kmod-tun installed at root due to /dev/net/tun missing issues
   elif [ "$2" = "sd" ]; then
      opkg update
      ln -s /sd/modules/ZeroTier /pineapple/modules/
@@ -26,8 +26,11 @@ if [ "$1" = "install" ]; then
      opkg -d sd install ip-tiny
      opkg -d sd install libminiupnpc
      opkg -d sd install libnatpmp
-     opkg install zerotier
+     opkg -d sd install zerotier
      # god this took forever to fix
+     cp /sd/etc/config/zerotier /etc/config/
+     ln -s /sd/etc/init.d/zerotier /etc/init.d/
+     ln -s /sd/usr/bin/zerotier-one /usr/bin/
      ln -s /sd/usr/lib/libminiupnpc.so.17 /lib/libminiupnpc.so.17
      ln -s /sd/usr/lib/libnatpmp.so.1 /lib/libnatpmp.so.1
 
@@ -49,6 +52,7 @@ elif [ "$1" = "remove" ]; then
     opkg remove libminiupnpc
     opkg remove libnatpmp
     rm -rf /etc/config/zerotier
+    rm -rf /sd/etc/config/zerotier
     rm -rf /var/lib/zerotier-one
 fi
 
