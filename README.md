@@ -17,6 +17,4 @@ Advanced config editing.
 
 Fix known issues.
 
-Show ip address on module page.
-
 Get allowed/authenticated status.
