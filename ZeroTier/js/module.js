@@ -82,6 +82,7 @@ registerController('ZeroTierController', ['$api', '$scope', '$rootScope', '$inte
     $scope.bootLabel = "";
 
     $scope.identity = "";
+    $scope.ip = "";
 
     $scope.getIdentity = function () {
         $api.request({
@@ -102,6 +103,7 @@ registerController('ZeroTierController', ['$api', '$scope', '$rootScope', '$inte
                 $scope.runningLabel = response.runningLabel;
                 $scope.boot = response.boot;
                 $scope.bootLabel = response.bootLabel;
+                $scope.ip = response.ip;
                 $scope.getIdentity();
             });
         }, 2000);
