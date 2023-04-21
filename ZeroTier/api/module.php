@@ -110,7 +110,7 @@ class ZeroTier extends Module
             "running" => "Start",
             "runningLabel" => "success",
             "boot" => "Disabled",
-            "bootLabel" => "success",
+            "bootLabel" => "danger",
             "ip" => ""
         ];
 
@@ -129,7 +129,7 @@ class ZeroTier extends Module
 
         if (file_exists("/pineapple/modules/ZeroTier/zerotier.boot")) {
             $response["boot"] = "Enabled";
-            $response["bootLabel"] = "danger";
+            $response["bootLabel"] = "success";
         }
 
         $this->response = $response;
@@ -186,7 +186,3 @@ class ZeroTier extends Module
     }
 
 }
-
-
-
-
