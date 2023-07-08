@@ -117,7 +117,8 @@ class ZeroTier extends Module
         if ($this->checkRunning("zerotier-one")) {
             $response["running"] = "Stop";
             $response["runningLabel"] = "danger";
-            $response["ip"] = exec("ifconfig ztyxayvrgh | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'");
+            $interface = exec("/usr/bin/zerotier-cli get {$this->uciGet("zerotier.openwrt_network.join")} portDeviceName");
+            $response["ip"] = exec("/sbin/ifconfig {$interface} | /bin/grep 'inet addr' | /usr/bin/cut -d: -f2 | /usr/bin/awk '{print $1}'");
             $this->execBackground("rm /tmp/zerotier.process");
         } else if (file_exists("/tmp/zerotier.process")) {
             $response["running"] = "Starting...";
